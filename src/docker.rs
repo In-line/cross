@@ -156,6 +156,7 @@ pub fn run(target: &Target,
         .args(&["-v", &format!("{}:/xargo", xargo_dir.display())])
         .args(&["-v", &format!("{}:/cargo", cargo_dir.display())])
         .args(&["-v", "/cargo/bin"]) // Prevent `bin` from being mounted inside the Docker container.
+        .args(&["-v", &format!("{}:/", root.parent().unwrap().display())])
         .args(&["-v", &format!("{}:/project", root.display())])
         .args(&["-v", &format!("{}:/rust", sysroot.display())])
         .args(&["-v", &format!("{}:/target", target_dir.display())])
